@@ -1,6 +1,15 @@
 # Project Dilbar 4.1 <img src="http://chittagongit.com/images/neural-network-icon/neural-network-icon-3.jpg" width="100" height="100" align="right"/> 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
+<br>
+<br>
+<br>
+<p align="center">
+  <img src="glove.png" width="400"/>
+  </p>
+<br>
+<br>
+
 ### 1. Contents
 - [Hello World (MNIST)](https://github.com/atick-faisal/Project-Dilbar-4.1/tree/master/Hello%20World%20(MNIST))
 - [Processing Software](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/Desktop_Software)
