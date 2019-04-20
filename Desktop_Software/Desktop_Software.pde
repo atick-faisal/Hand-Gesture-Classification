@@ -1,7 +1,7 @@
 /*
     Code : Collect and Test data For Gesture Classification
     Author : Atick Faisal
-    License : MIT
+    License : GPL-3.0
 */
 
 import processing.serial.*;
@@ -28,7 +28,7 @@ double result[] = new double[NUM_GESTURES];
 double prediction[] = new double[NUM_GESTURES];
 
 String data = "40,30,50,20,100,-140,-20,40";
-float flex_data[] = {30, 10, 70, 30, 20};
+float flex_data[] = {100, 50, -70, 5, 70};
 float adxl_data[] = {-140, -20, -40};
 float test_data[] = new float[NUM_FEATURES];
 
@@ -39,10 +39,10 @@ void setup() {
   fullScreen();
   // hcitool scan
   // sudo rfcomm bind /dev/rfcomm0 CC:50:E3:A1:5D:1A
-  port = new Serial(this, "/dev/ttyUSB0", 9600);
-  port.bufferUntil('\n');
-  get_weights();
-  get_biases();
+  //port = new Serial(this, "/dev/ttyUSB0", 115200);
+  //port.bufferUntil('\n');
+  //get_weights();
+  //get_biases();
   count = 0;
 }
 /////////////////////////////////////////////////////////////////////////////// ==>> Drawing
@@ -74,8 +74,8 @@ void draw() {
 }
 /////////////////////////////////////////////////////////////////////////////// ==>> Drawing Background
 void draw_backgrounds() {
-  img = loadImage("logo.png");
-  image(img, width/2 - 330, 30, 100, 135);
+  img = loadImage("logo.jpeg");
+  image(img, width/2 - 330, 30, 100, 100);
   noStroke();
   fill(255);
   rect(width/2 - 330, 135, 100, 40);
@@ -119,10 +119,10 @@ void draw_selector_2() {
 //////////////////////////////////////////////////////////////////////////////////// ==>> Drawing Bar Chart
 void draw_bar_chart() {
   int startX = 575;
-  int startY = 570;
+  int startY = 420;
   int sep = 0;
   for (int i = 0; i < 5; i++) {
-    int bar_height = (int) flex_data[i] * 3;
+    int bar_height = (int) flex_data[i];
     int bar_width = 40;
     fill(48, 63, 159);
     noStroke();
@@ -135,7 +135,7 @@ void draw_bar_chart() {
   fill(100);
   font = loadFont("Ubuntu-20.vlw");
   textFont(font, 14);
-  text("1          2          3          4          5", startX + 17, startY + 30);
+  //text("1          2          3          4          5", startX + 17, startY + 30);
 }
 //////////////////////////////////////////////////////////////////////////////////////////// ==>> Drawing spider Chart
 void draw_spider() {
@@ -222,12 +222,12 @@ void draw_gestures() {
 void draw_save_button() {
   noStroke();
   fill(56, 142, 60);
-  rect(width/2 - 90, 667, 200, 50, 4);
+  rect(width/2 - 90, 617, 200, 50, 4);
   
   fill(255);
   font = loadFont("Ubuntu-20.vlw");
   textFont(font, 20);
-  text("Save Data", width/2 - 36, 700);
+  text("Save Data", width/2 - 36, 650);
 }
 ///////////////////////////////////////////////////////////////////////////////////////// ==>> Drawing Prediction Text
 void draw_prediction_texts() {
@@ -279,7 +279,7 @@ void saveData() {
     FileWriter fw = new FileWriter(file, true);
     BufferedWriter bw = new BufferedWriter(fw);
     PrintWriter pw = new PrintWriter(bw);
-    String write_data = data.substring(0, data.length() - 2) + gestures[selection] + '\n';
+    String write_data = data.substring(0, data.length() - 2) + ',' + gestures[selection] + '\n';
     pw.write(write_data);
     pw.close();
   }
@@ -292,8 +292,9 @@ void saveData() {
 void serialEvent (Serial port) {
   data = port.readStringUntil('\n');
   println(data);
-  while(count < 5) {
+  while(count < 10) {
     count++;
+    return;
   }
   String values[] = split(data, ',');
   for (int i = 0; i < NUM_FEATURES; i++) {
