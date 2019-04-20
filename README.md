@@ -10,6 +10,9 @@
 <br>
 <br>
 
+### Abstract
+Currenty the device classifies `14` different gestures using `8` features. `5 flex sensor` data for each finger and `3` MPU6050 readings for `3D` orientation.
+
 ### 1. Contents
 - [Hello World (MNIST)](https://github.com/atick-faisal/Project-Dilbar-4.1/tree/master/Hello%20World%20(MNIST))
 - [Processing Software](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/Desktop_Software)
@@ -17,6 +20,17 @@
 - [Logistic Regression Classifier](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/Logistic_Classifier)
 - [KNN Classifier](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/KNN_Classifier)
 - [SVM Classifier](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/SVM_Classifier)
+- [Python Serial Output](https://github.com/atick-faisal/Hand-Gesture-Classification/tree/master/Python_Serial)
+
+### 2. Dependencies
+  #### Python 3.5
+    - Numpy
+    - Matplotlib
+    - Pandas
+    - Scikit-Learn
+    - Jupyter Notebook
+  #### ESP-32
+    - Wire
 
 ## License
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
