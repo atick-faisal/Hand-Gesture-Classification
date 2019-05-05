@@ -103,6 +103,13 @@ void __apply_mean_filter() {
   }
 }
 
+// void __apply_median_filter() {
+//   int i = 0, j = 0, temp = 0;
+//   for(i = 1; i < 5; i++) {
+//     temp = analogRead()
+//   }
+// }
+
 void __auto_calibration() {
   float sum[] = {0, 0, 0, 0, 0};
   for (int i = 0; i < 700; i++) {

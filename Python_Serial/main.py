@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn import svm
 from time import sleep
 import serial
 import os
@@ -15,7 +16,8 @@ train_data.head()
 X = train_data.drop(columns=['gesture'])
 Y = train_data['gesture']
 
-clf = KNeighborsClassifier(n_neighbors=3);
+clf = KNeighborsClassifier(n_neighbors=7);
+#clf = svm.SVC(gamma='auto', kernel='poly', degree=3)
 clf.fit(X, Y);
 
 print(clf.score(X, Y)*100 , "%")
