@@ -22,7 +22,7 @@ clf.fit(X, Y);
 
 print(clf.score(X, Y)*100 , "%")
 
-ser = serial.Serial('/dev/ttyUSB0', 115200)
+ser = serial.Serial('/dev/ttyUSB1', 115200)
 
 while True:
     incoming = ser.readline().decode('ascii')

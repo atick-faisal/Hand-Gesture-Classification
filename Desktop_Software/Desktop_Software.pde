@@ -39,7 +39,7 @@ void setup() {
   fullScreen();
   // hcitool scan
   // sudo rfcomm bind /dev/rfcomm0 CC:50:E3:A1:5D:1A
-  port = new Serial(this, "/dev/ttyUSB1", 115200);
+  port = new Serial(this, "/dev/ttyUSB0", 115200);
   port.bufferUntil('\n');
   //get_weights();
   //get_biases();
@@ -162,17 +162,17 @@ void draw_spider() {
   ellipse(startX + adxl_data[0]*cos(0*2*PI/3), startY - adxl_data[0]*sin(0*2*PI/3), 15, 15);
   ellipse(startX + 100, startY - 200, 10, 10);
   fill(70);
-  text("X-Axis", startX + 110, startY - 197);
+  text("Yaw", startX + 110, startY - 197);
   fill(171, 71, 188);
   ellipse(startX + adxl_data[1]*cos(1*2*PI/3), startY - adxl_data[1]*sin(1*2*PI/3), 15, 15);
   ellipse(startX + 100, startY - 185, 10, 10);
   fill(70);
-  text("Y-Axis", startX + 110, startY - 182);
+  text("Pitch", startX + 110, startY - 182);
   fill(245, 124, 0);
   ellipse(startX + adxl_data[2]*cos(2*2*PI/3), startY - adxl_data[2]*sin(2*2*PI/3), 15, 15);
   ellipse(startX + 100, startY - 170, 10, 10);
   fill(70);
-  text("Z-Axis", startX + 110, startY - 167);
+  text("Roll", startX + 110, startY - 167);
 }
 ///////////////////////////////////////////////////////////////////////////////// ==>> Drawing Table Rectangles
 void draw_rects() {
