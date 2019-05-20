@@ -57,20 +57,20 @@ void setup() {
   Serial.println("Calibrating Sensors...");
   //__auto_calibration();
   digitalWrite(LED_BUILTIN, HIGH);
-  __auto_calibration_median();
+  //__auto_calibration_median();
   digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() {
   __read_accelerometer();
   __process_acc_data();
-  //__calculate_acc_angle();
-  //__read_gyroscope();
-  //__process_gyro_data();
-  //__calculate_gyro_angle();
-  //__apply_complementary_filter();
+  __calculate_acc_angle();
+  __read_gyroscope();
+  __process_gyro_data();
+  __calculate_gyro_angle();
+  __apply_complementary_filter();
   //__apply_mean_filter();
-  __apply_median_filter();
+  //__apply_median_filter();
   __gen_data_string();
   Serial.println(data);
   //bt.println(data);
@@ -109,7 +109,7 @@ void __read_gyroscope() {
   // ----------------- Calculate elapsed time between readings ------------//
   previousTime = currentTime;
   currentTime = millis();
-  elapsedTime = (currentTime - previousTime) / 1000;
+  elapsedTime = (currentTime - previousTime + 1) / 1000;
   //------------- Take gyro Readings ---------------//
   Wire.beginTransmission(I2C_ADDRESS);
   Wire.write(0x43);
@@ -193,9 +193,10 @@ void __read_flex_data() {
 }
 
 void __gen_data_string() {
-  //sprintf(buffer, "%f\t%f\t%f", yaw, pitch, roll);
+  sprintf(buffer, "%f\t%f\t%f", accAngleX, gyroAngleX, roll);
+  // sprintf(buffer, "%f\t%f\t%f", yaw, pitch, roll);
   //sprintf(buffer, "%f\t%f\t%f", ax, ay, az);
-  sprintf(buffer, "%f,%f,%f,%f,%f,%f,%f,%f", flex_data[0], flex_data[1], flex_data[2], flex_data[3], flex_data[4], ax, ay, az);
+  //sprintf(buffer, "%f,%f,%f,%f,%f,%f,%f,%f", flex_data[0], flex_data[1], flex_data[2], flex_data[3], flex_data[4], ax, ay, az);
   data = buffer;
 }
 

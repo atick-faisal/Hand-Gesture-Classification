@@ -39,8 +39,8 @@ void setup() {
   fullScreen();
   // hcitool scan
   // sudo rfcomm bind /dev/rfcomm0 CC:50:E3:A1:5D:1A
-  port = new Serial(this, "/dev/ttyUSB0", 115200);
-  port.bufferUntil('\n');
+  //port = new Serial(this, "/dev/ttyUSB0", 115200);
+  //port.bufferUntil('\n');
   //get_weights();
   //get_biases();
   count = 0;
